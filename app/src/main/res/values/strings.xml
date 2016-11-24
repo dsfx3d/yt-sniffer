@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">YTP3</string>
+
+    <string name="query_label">search by youtube title or id</string>
+    <string name="query_placeholder">eg.  Hotel California</string>
+    <string name="sniff_b_state_1">Sniff YouTube</string>
+    <string name="sniff_b_state_2">stop sniffing</string>
+    
+    <string name="sniffing_text_1">sniffing YouTube for <b>%s</b></string>
+    <string name="sniffing_text_2">downloading mp3..</string>
+
+    <string name="unknown_host_exception">There was a problem connecting to YouTube. If there is no problem with your internet connection, then we must be leveling up our servers. The service will resume in some time. Please try again later.</string>
+</resources>
