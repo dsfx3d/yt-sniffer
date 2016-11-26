@@ -17,32 +17,29 @@
         app:indicatorName="LineScaleIndicator"
         app:indicatorColor="#f9f9f9" />
 
-    <TextView
-        android:layout_centerHorizontal="true"
-        android:paddingTop="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
     <RelativeLayout
         android:layout_marginTop="120dp"
         android:layout_centerHorizontal="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <EditText
+        <dsfx3d.dope.ytp3.ui.FontFitTextView
             android:id="@+id/query_field"
             android:background="@color/colorRoyalBlue"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="120sp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
+            android:paddingTop="20dp"
             android:textSize="50sp"
             android:inputType="textFilter"
+            android:gravity="center|top"
             android:textColor="#f9f9f9"
             android:shadowColor="@color/colorPrimaryDark"
-            android:shadowRadius="15"
+            android:shadowRadius="20"
             android:hint="@string/query_placeholder"
             android:textColorHint="#f9f9f9"
+            android:maxLines="2"
             />
 
         <Button
@@ -65,6 +62,9 @@
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
         android:textColor="#f9f9f9"
+        android:shadowColor="@color/colorPrimaryDark"
+        android:shadowRadius="10"
+        android:fontFamily="sans-serif-condensed"
         android:gravity="center"
         android:textSize="12sp"
         android:paddingTop="10dp"
@@ -74,4 +74,18 @@
         android:layout_marginBottom="100dp"
         />
 
+    <TextView
+        android:paddingRight="2dp"
+        android:paddingLeft="2dp"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="#f9f9f9"
+        android:fontFamily="sans-serif-condensed"
+        android:text=" @dsfx3d "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 </RelativeLayout>

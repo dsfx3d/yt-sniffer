@@ -7,9 +7,7 @@ import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,13 +18,20 @@ import com.android.volley.VolleyError;
 import com.facebook.rebound.SimpleSpringListener;
 import com.facebook.rebound.Spring;
 import com.facebook.rebound.SpringSystem;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.wang.avi.AVLoadingIndicatorView;
 
+import dsfx3d.dope.ytp3.ui.FontFitTextView;
 import dsfx3d.dope.ytp3.utils.HttpComm;
 
 public class MainActivity extends AppCompatActivity implements Response.Listener<String>, Response.ErrorListener, View.OnClickListener {
 
-    TextView queryTV,res;
+    FontFitTextView queryET;
+    TextView res;
     Button submit;
     SpringSystem springSystem;
     Spring spring;
@@ -34,6 +39,8 @@ public class MainActivity extends AppCompatActivity implements Response.Listener
 
     HttpComm communicator;
     boolean commFlag;
+
+    DatabaseReference fartistRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,19 +50,28 @@ public class MainActivity extends AppCompatActivity implements Response.Listener
     }
 
     @Override
-    public void onBackPressed() {
-
-    }
-
-    @Override
     protected void onPause() {
         super.onPause();
         submit.setBackgroundColor(getResources().getColor(R.color.colorBerry));
-        queryTV.setEnabled(true);
+        queryET.setEnabled(true);
         submit.setText(getString(R.string.sniff_b_state_1));
     }
 
     void init() {
+        fartistRef = FirebaseDatabase.getInstance().getReference("featured_artist");
+        fartistRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                queryET.setHint(dataSnapshot.getValue(String.class));
+                Log.v("_FIREBASE__","value changed");
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
         getLayout();
         initAnimation();
     }
@@ -81,11 +97,12 @@ public class MainActivity extends AppCompatActivity implements Response.Listener
     }
 
     void getLayout() {
-        queryTV = (TextView) findViewById(R.id.query_field);
-        Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/font.ttf");
-        queryTV.setTypeface(typeface);
+        queryET = (FontFitTextView) findViewById(R.id.query_field);
+        Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/alba.ttf");
+        queryET.setTypeface(typeface);
 
         res = (TextView) findViewById(R.id.res);
+        res.setText(getString(R.string.query_label));
 
         submit = (Button) findViewById(R.id.submit_button);
         submit.setOnClickListener(this);
@@ -99,7 +116,7 @@ public class MainActivity extends AppCompatActivity implements Response.Listener
     public void onErrorResponse(VolleyError error) {
         if(!commFlag)return;
         loadingIndicatorView.hide();
-        queryTV.setEnabled(true);
+        queryET.setEnabled(true);
         Log.e("__HttpResponseError","Response: " + error.getMessage());
         res.setVisibility(View.VISIBLE);
         submit.setText(getString(R.string.sniff_b_state_1));
@@ -121,7 +138,7 @@ public class MainActivity extends AppCompatActivity implements Response.Listener
 
     @Override
     public void onClick(View v) {
-        if(queryTV.getText().toString().isEmpty()) {
+        if(queryET.getText().toString().isEmpty()) {
             Toast.makeText(this, "enter song name", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -132,10 +149,10 @@ public class MainActivity extends AppCompatActivity implements Response.Listener
         if(submit.getText().toString().equals(getString(R.string.sniff_b_state_1))) {
             commFlag=true;
             submit.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
-            queryTV.setEnabled(false);
+            queryET.setEnabled(false);
             submit.setText(getString(R.string.sniff_b_state_2));
 
-            String query = queryTV.getText().toString();
+            String query = queryET.getText().toString();
             query = query.replace(' ','-');
 
             communicator = new HttpComm(MainActivity.this);
@@ -148,7 +165,7 @@ public class MainActivity extends AppCompatActivity implements Response.Listener
             communicator.stopResquestPipeline();
 
             submit.setBackgroundColor(getResources().getColor(R.color.colorBerry));
-            queryTV.setEnabled(true);
+            queryET.setEnabled(true);
             submit.setText(getString(R.string.sniff_b_state_1));
             loadingIndicatorView.hide();
         }
