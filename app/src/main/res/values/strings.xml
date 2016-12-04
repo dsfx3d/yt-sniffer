@@ -1,13 +1,17 @@
 <resources>
     <string name="app_name">YTP3</string>
 
-    <string name="query_label">The app sniffs YouTube for the song title you enter and downloads the most relevant search result. If the app is unsure about the result, it redirects you to a manual download page.</string>
-    <string name="query_placeholder">nirvana</string>
+    <string name="query_label">YTP3 sniffs YouTube for the track you enter and downloads the most relevant search result. If its not sure about it, you are redirected to a manual download page.</string>
+    <string name="query_placeholder">search</string>
     <string name="sniff_b_state_1">Sniff YouTube</string>
     <string name="sniff_b_state_2">stop sniffing</string>
-    
+
     <string name="sniffing_text_1">sniffing YouTube for <b>%s</b></string>
     <string name="sniffing_text_2">downloading mp3..</string>
 
-    <string name="unknown_host_exception">There was a problem connecting to YouTube. If there is no problem with your internet connection, then we must be leveling up our servers. The service will resume in some time. Please try again later.</string>
+    <string name="unknown_host_exception">There was a problem connecting to YouTube. If there is no problem with your internet connection, then we must be leveling up our servers. The service will resume in some time. Or just try again a few times and it might work.</string>
+
+    <string name="tip_1"><b>Tip:</b> You don\'t need to use space between words.</string>
+    <string name="this_week">• FEATURED •</string>
+    <string name="cover_image_description">cover image</string>
 </resources>

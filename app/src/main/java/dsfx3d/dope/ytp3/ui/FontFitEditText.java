@@ -7,14 +7,14 @@ import android.util.TypedValue;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class FontFitTextView extends TextView {
+public class FontFitEditText extends EditText {
 
-    public FontFitTextView(Context context) {
+    public FontFitEditText(Context context) {
         super(context);
         initialise();
     }
 
-    public FontFitTextView(Context context, AttributeSet attrs) {
+    public FontFitEditText(Context context, AttributeSet attrs) {
         super(context, attrs);
         initialise();
     }

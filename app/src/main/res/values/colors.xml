@@ -9,4 +9,15 @@
     <color name="colorShamrock">#2ECC71</color>
     <color name="colorTahitiGold">#E87E04</color>
     <color name="colorBerry">#f41360</color>
+
+    <color name="transparent_white">#E6FFFFFF</color>
+    <color name="transparent_black">#E6000000</color>
+    <color name="themeWhite">#f9f9f9</color>
+
+    <color name="monster_green">#92E601</color>
+
+    <color name="nephris_green">#27ae60</color>
+    <color name="midnight_black">#2c3e50</color>
+
+    <color name="youtube_red">#cd201f</color>
 </resources>

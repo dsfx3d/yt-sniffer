@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ytp3_api_url">https://kashyap32-youtubetomp3-v1.p.mashape.com/</string>
+    <string name="firebase_ref">https://ytp3-d71d4.firebaseio.com/ </string>
+    <string name="fb_suggested_text_ref">https://ytp3-d71d4.firebaseio.com/suggested_text</string>
+    <string name="fb_featured_artist_ref"> https://ytp3-d71d4.firebaseio.com/featured_content/featured_artist</string>
+    <string name="yt_channel_url_prefix">https://www.youtube.com/channel/</string>
+</resources>

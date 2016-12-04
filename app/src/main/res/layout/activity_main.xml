@@ -15,30 +15,31 @@
         android:layout_centerInParent="true"
         style="@style/AVLoadingIndicatorView.Large"
         app:indicatorName="LineScaleIndicator"
-        app:indicatorColor="#f9f9f9" />
+        app:indicatorColor="@color/themeWhite" />
 
     <RelativeLayout
+        android:id="@+id/form_layout"
         android:layout_marginTop="120dp"
         android:layout_centerHorizontal="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <dsfx3d.dope.ytp3.ui.FontFitTextView
+        <dsfx3d.dope.ytp3.ui.FontFitEditText
             android:id="@+id/query_field"
             android:background="@color/colorRoyalBlue"
             android:layout_width="wrap_content"
             android:layout_height="120sp"
+            android:paddingTop="20dp"
+            android:textSize="60sp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
-            android:paddingTop="20dp"
-            android:textSize="50sp"
             android:inputType="textFilter"
             android:gravity="center|top"
-            android:textColor="#f9f9f9"
+            android:textColor="@color/themeWhite"
             android:shadowColor="@color/colorPrimaryDark"
-            android:shadowRadius="20"
+            android:shadowRadius="10"
             android:hint="@string/query_placeholder"
-            android:textColorHint="#f9f9f9"
+            android:textColorHint="@color/themeWhite"
             android:maxLines="2"
             />
 
@@ -47,12 +48,43 @@
             android:layout_below="@+id/query_field"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
+            android:layout_marginLeft="13dp"
+            android:layout_marginRight="13dp"
             android:text="@string/sniff_b_state_1"
-            android:background="@color/colorBerry"
-            android:textColor="#f9f9f9"
+            android:background="@color/transparent_black"
+            android:textColor="@color/themeWhite"
             />
+        <LinearLayout
+            android:id="@+id/menu_layout"
+            android:layout_below="@+id/submit_button"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content"
+            android:layout_toStartOf="@+id/settings_activity">
+
+            <ImageView
+                android:id="@+id/featured_activity"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="12dp"
+                android:background="@drawable/ic_action_stars"
+                />
+            <ImageView
+                android:id="@+id/update_icon"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="@drawable/ic_av_new_releases"
+                />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/settings_activity"
+            android:layout_below="@+id/submit_button"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginEnd="12dp"
+            android:background="@drawable/ic_action_settings"
+            android:layout_alignParentEnd="true"/>
     </RelativeLayout>
 
     <TextView
@@ -82,10 +114,11 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:background="@color/colorPrimaryDark"
-        android:textColor="#f9f9f9"
+        android:background="#f9f9f9"
+        android:textColor="@color/transparent_black"
         android:fontFamily="sans-serif-condensed"
         android:text=" @dsfx3d "
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+
 </RelativeLayout>
